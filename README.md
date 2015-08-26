@@ -9,9 +9,9 @@ Leaflet.draw-ellipse 0.1.0+ requires
 + [Leaflet.draw 0.2.4](https://github.com/Leaflet/Leaflet.draw/releases/tag/v0.2.4)
 + [Leaflet.ellipse](https://github.com/jdfergason/Leaflet.Ellipse)
 
-## Using the plugin
+## Usage
 
-See [Leaflet.draw usage](https://github.com/Leaflet/Leaflet.draw#using)
+See [Leaflet.draw](https://github.com/Leaflet/Leaflet.draw#using) and [Leaflet.ellipse](https://github.com/jdfergason/Leaflet.Ellipse#usage).
 
 ## Options
 
