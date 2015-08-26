@@ -1,0 +1,11 @@
+/* ================================================================== */
+/* Draw toolbar
+/* ================================================================== */
+
+.leaflet-draw-toolbar .leaflet-draw-draw-ellipse {
+	background-position: -92px -2px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-ellipse {
+	background-position: -90px -1px;
+}

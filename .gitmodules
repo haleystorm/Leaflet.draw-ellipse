@@ -1,0 +1,6 @@
+[submodule "Leaflet.draw"]
+	path = Leaflet.draw
+	url = https://github.com/Leaflet/Leaflet.draw.git
+[submodule "Leaflet.Ellipse"]
+	path = Leaflet.Ellipse
+	url = https://github.com/jdfergason/Leaflet.Ellipse.git
