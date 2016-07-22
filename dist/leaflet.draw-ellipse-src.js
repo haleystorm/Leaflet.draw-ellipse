@@ -34,9 +34,7 @@ L.Draw.Ellipse = L.Draw.SimpleShape.extend({
 			fill: true,
 			fillColor: null, //same as color by default
 			fillOpacity: 0.2,
-			clickable: true,
-			startAngle: 0,
-	        endAngle: 359.9
+			clickable: true
 		},
 		showRadius: true,
 		metric: true // Whether to use the metric measurement system or imperial
