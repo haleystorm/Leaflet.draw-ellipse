@@ -244,6 +244,9 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 			this._shape.setTilt(tilt);
 		} else if(xDelta < radius) {
 			var tilt = Math.acos(xDelta / radius) * L.LatLng.RAD_TO_DEG;
+			if(point.x > movePoint.x) {
+				tilt = 180 - tilt;
+			}
 			if(point.y > movePoint.y) {
 				tilt = -1 * tilt;
 			}
