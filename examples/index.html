@@ -3,11 +3,11 @@
 <head>
 	<title>Leaflet Draw</title>
 
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+	<link rel="stylesheet" href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css" />
     <link rel="stylesheet" href="../Leaflet.draw/dist/leaflet.draw.css" />
     <link rel="stylesheet" href="../dist/leaflet.draw-ellipse.css" />
 
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+	<script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
     <script src="../Leaflet.draw/dist/leaflet.draw.js"></script>
     <script src="../Leaflet.Ellipse/l.ellipse.js"></script>
 
@@ -21,9 +21,9 @@
 </head>
 <body>
 	<div id="map" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
-	
+
 	<script>
-	
+
 		var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 			osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
@@ -75,7 +75,7 @@
 
 		var ellipse = L.ellipse([-37.7772, 175.2756], [500, 100], 45);
 		drawnItems.addLayer(ellipse);
-		
+
 	</script>
 </body>
 </html>
