@@ -34,9 +34,7 @@ L.Draw.Ellipse = L.Draw.SimpleShape.extend({
 			fill: true,
 			fillColor: null, //same as color by default
 			fillOpacity: 0.2,
-			clickable: true,
-			startAngle: 0,
-	        endAngle: 359.9
+			clickable: true
 		},
 		showRadius: true,
 		metric: true // Whether to use the metric measurement system or imperial
@@ -246,6 +244,9 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 			this._shape.setTilt(tilt);
 		} else if(xDelta < radius) {
 			var tilt = Math.acos(xDelta / radius) * L.LatLng.RAD_TO_DEG;
+			if(point.x > movePoint.x) {
+				tilt = 180 - tilt;
+			}
 			if(point.y > movePoint.y) {
 				tilt = -1 * tilt;
 			}
