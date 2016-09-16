@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Leaflet Draw</title>
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
-    <link rel="stylesheet" href="../Leaflet.draw/dist/leaflet.draw.css" />
-    <link rel="stylesheet" href="../dist/leaflet.draw-ellipse.css" />
+	<link rel="stylesheet" href="../Leaflet.draw/dist/leaflet.draw.css" />
+	<link rel="stylesheet" href="../dist/leaflet.draw-ellipse.css" />
 
 	<script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
-    <script src="../Leaflet.draw/dist/leaflet.draw.js"></script>
-    <script src="../Leaflet.Ellipse/l.ellipse.js"></script>
+	<script src="../Leaflet.draw/dist/leaflet.draw.js"></script>
+	<script src="../Leaflet.Ellipse/l.ellipse.js"></script>
 
-    <script src="../src/Leaflet.draw-ellipse.js"></script>
+	<script src="../src/Leaflet.draw-ellipse.js"></script>
 
 	<script src="../src/edit/handler/Edit.Ellipse.js"></script>
 
@@ -19,15 +20,22 @@
 
 	<script src="../src/draw/DrawToolbar.js"></script>
 </head>
+
 <body>
 	<div id="map" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
 
 	<script>
-
 		var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-			osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
-			map = new L.Map('map', {layers: [osm], center: new L.LatLng(-37.7772, 175.2756), zoom: 15 });
+			osm = L.tileLayer(osmUrl, {
+				maxZoom: 18,
+				attribution: osmAttrib
+			}),
+			map = new L.Map('map', {
+				layers: [osm],
+				center: new L.LatLng(-37.7772, 175.2756),
+				zoom: 15
+			});
 
 		var drawnItems = new L.FeatureGroup();
 		map.addLayer(drawnItems);
@@ -62,7 +70,7 @@
 		});
 		map.addControl(drawControl);
 
-		map.on('draw:created', function (e) {
+		map.on('draw:created', function(e) {
 			var type = e.layerType,
 				layer = e.layer;
 
@@ -75,7 +83,7 @@
 
 		var ellipse = L.ellipse([-37.7772, 175.2756], [500, 100], 45);
 		drawnItems.addLayer(ellipse);
-
 	</script>
 </body>
+
 </html>
