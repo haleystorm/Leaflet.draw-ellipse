@@ -15,7 +15,7 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 			className: 'leaflet-div-icon leaflet-editing-icon leaflet-edit-rotate'
 		})
 	},
-	
+
 	_initMarkers: function () {
 		if (!this._markerGroup) {
 			this._markerGroup = new L.LayerGroup();
@@ -26,14 +26,14 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 
 		// Create edge marker
 		this._createResizeMarker();
-		
+
 		// Create rotate Marker();
 		this._createRotateMarker();
 	},
-	
+
 	_createMoveMarker: function () {
 		var center = this._shape.getLatLng();
-		
+
 		this._moveMarker = this._createMarker(center, this.options.moveIcon);
 	},
 
@@ -54,64 +54,64 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 		this._resizeMarkers[2]._isX = false;
 		this._resizeMarkers[3]._isX = false;
 	},
-	
+
 	_createRotateMarker: function() {
 		var center = this._shape.getLatLng(),
 			rotatemarkerPoint = this._getRotateMarkerPoint(center);
-		
+
 		this._rotateMarker = this._createMarker(rotatemarkerPoint, this.options.rotateIcon);
 	},
 
 	_getResizeMarkerPointX1: function (latlng) {
-		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
+		var tilt = this._shape._tiltDeg * (Math.PI / 180);
 		var radius = this._shape._radiusX;
 		var xDelta = radius * Math.cos(tilt);
 		var yDelta = radius * Math.sin(tilt);
 		var point = this._map.project(latlng);
 		return this._map.unproject([point.x + xDelta, point.y + yDelta]);
 	},
-	
+
 	_getResizeMarkerPointX2: function (latlng) {
-		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
+		var tilt = this._shape._tiltDeg * (Math.PI / 180);
 		var radius = this._shape._radiusX;
 		var xDelta = radius * Math.cos(tilt);
 		var yDelta = radius * Math.sin(tilt);
 		var point = this._map.project(latlng);
 		return this._map.unproject([point.x - xDelta, point.y - yDelta]);
 	},
-	
+
 	_getResizeMarkerPointY1: function (latlng) {
-		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
+		var tilt = this._shape._tiltDeg * (Math.PI / 180);
 		var radius = this._shape._radiusY;
 		var xDelta = radius * Math.sin(tilt);
 		var yDelta = radius * Math.cos(tilt);
 		var point = this._map.project(latlng);
 		return this._map.unproject([point.x - xDelta, point.y + yDelta]);
 	},
-	
+
 	_getResizeMarkerPointY2: function (latlng) {
-		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
+		var tilt = this._shape._tiltDeg * (Math.PI / 180);
 		var radius = this._shape._radiusY;
 		var xDelta = radius * Math.sin(tilt);
 		var yDelta = radius * Math.cos(tilt);
 		var point = this._map.project(latlng);
 		return this._map.unproject([point.x + xDelta, point.y - yDelta]);
 	},
-	
+
 	_getRotateMarkerPoint: function (latlng) {
-		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
+		var tilt = this._shape._tiltDeg * (Math.PI / 180);
 		var radius = this._shape._radiusX + 20;
 		var xDelta = radius * Math.cos(tilt);
 		var yDelta = radius * Math.sin(tilt);
 		var point = this._map.project(latlng);
 		return this._map.unproject([point.x - xDelta, point.y - yDelta]);
 	},
-	
+
 	_onMarkerDragStart: function (e) {
 		L.Edit.SimpleShape.prototype._onMarkerDragStart.call(this, e);
 		this._currentMarker = e.target;
 	},
-	
+
 	_onMarkerDrag: function (e) {
 		var marker = e.target,
 			latlng = marker.getLatLng();
@@ -130,14 +130,14 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 	_move: function (latlng) {
 		// Move the ellipse
 		this._shape.setLatLng(latlng);
-		
+
 		// Move the resize marker
 		this._repositionResizeMarkers();
-		
+
 		// Move the rotate marker
 		this._repositionRotateMarker();
 	},
-	
+
 	_rotate: function (latlng) {
 		var moveLatLng = this._moveMarker.getLatLng();
 		var point = this._map.project(latlng);
@@ -145,7 +145,7 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 		var xLatLng = this._map.unproject([point.x, movePoint.y]);
 		var radius = moveLatLng.distanceTo(latlng);
 		var xDelta = moveLatLng.distanceTo(xLatLng);
-		
+
 		if(movePoint.y.toFixed(1) === point.y.toFixed(1)) {
 			var tilt = 0;
 			// Rotate the ellipse
@@ -155,7 +155,7 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 			// Rotate the ellipse
 			this._shape.setTilt(tilt);
 		} else if(xDelta < radius) {
-			var tilt = Math.acos(xDelta / radius) * L.LatLng.RAD_TO_DEG;
+			var tilt = Math.acos(xDelta / radius) * (180 / Math.PI);
 			if(point.x > movePoint.x) {
 				tilt = 180 - tilt;
 			}
@@ -165,10 +165,10 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 			// Rotate the ellipse
 			this._shape.setTilt(tilt);
 		}
-		
+
 		// Move the resize marker
 		this._repositionResizeMarkers();
-		
+
 		// Move the rotate marker
 		this._repositionRotateMarker();
 	},
@@ -181,13 +181,13 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 		} else {
 			this._shape.setRadius([this._shape._mRadiusX, radius]);
 		}
-		
+
 		// Move the resize marker
 		this._repositionResizeMarkers();
 		// Move the rotate marker
 		this._repositionRotateMarker();
 	},
-	
+
 	_repositionResizeMarkers: function () {
 		var latlng = this._moveMarker.getLatLng();
 		var resizemarkerPointX1 = this._getResizeMarkerPointX1(latlng);
@@ -200,11 +200,11 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 		this._resizeMarkers[2].setLatLng(resizemarkerPointY1);
 		this._resizeMarkers[3].setLatLng(resizemarkerPointY2);
 	},
-	
+
 	_repositionRotateMarker: function () {
 		var latlng = this._moveMarker.getLatLng();
 		var rotatemarkerPoint = this._getRotateMarkerPoint(latlng);
-		
+
 		this._rotateMarker.setLatLng(rotatemarkerPoint);
 	}
 });
