@@ -6,7 +6,7 @@ Adds support for drawing and editing ellipses in the [Leaflet.draw](https://gith
 Leaflet.draw-ellipse 0.1.0+ requires 
 
 + [Leaflet 0.7](https://github.com/Leaflet/Leaflet/releases/tag/v0.7) or higher
-+ [Leaflet.draw 0.2.4](https://github.com/Leaflet/Leaflet.draw/releases/tag/v0.2.4)
++ [Leaflet.draw 1.0.4](https://github.com/Leaflet/Leaflet.draw/releases/tag/v1.0.4)
 + [Leaflet.ellipse](https://github.com/jdfergason/Leaflet.Ellipse)
 
 ## Usage
